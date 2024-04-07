@@ -116,12 +116,12 @@ function validate_mobile($mobile)
         // require_once '../utilities/mail_setup.php';       
 
         // $_SESSION['activate_message'] = "Kindly check your email and activate your account";
-        header('Location: home.php');	
+        header('Location: login.php');	
 
     }
     if ($errors){
         foreach ($errors as $error){
-            echo "<p class='text-danger text-center'><strong>$error</strong></p>";
+            echo "<p style='color:red; text-align:center;'><strong>$error</strong></p>";
         }
     }
     mysqli_stmt_close($stmt);
@@ -130,3 +130,49 @@ function validate_mobile($mobile)
 
 
 
+//log in user
+
+if(isset($_POST["login_btn"])){
+    $loginEmail =sanitize($_POST["login_email"]);
+    $loginPassword = sanitize($_POST["login_password"]);
+
+
+    if(empty($loginEmail)){
+       echo $errors['noEmailErr'];
+    }
+
+    if(empty($loginPassword)){
+        echo $errors['passwordErr'];
+    }
+
+    $stmt = mysqli_prepare($conn, "SELECT id , firstName, lastName, userPassword FROM user WHERE userEmail = ? LIMIT 1");
+    mysqli_stmt_bind_param($stmt, "s", $loginEmail);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $userid, $first_name, $last_name, $password_db);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+
+        // Check if email is exist 
+        if (empty($userid)){
+            $errors['emailNotExistsErr'] ='We cannot find an account with that email address';
+        }
+
+        // if(empty($errors)){
+        //     $stmt = mysqli_prepare($conn, "SELECT userPassword FROM user WHERE ");
+
+            // Check if passwords match
+        if (password_verify($loginPassword, $password_db)) {
+            // Verification success! User has logged-in!
+            // session_regenerate_id(); //create session to remember user
+            header('Location: home.php');
+        }else{
+                // Incorrect password
+            $errors['namepassErr'] = 'Wrong credentials!';
+}
+if ($errors){
+    foreach ($errors as $error){
+        echo "<p class='text-danger text-center'><strong>$error</strong></p>";
+    }
+}
+
+}

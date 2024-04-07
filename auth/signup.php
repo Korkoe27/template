@@ -1,3 +1,8 @@
+<?php
+include("auth.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +19,10 @@
         .login{
             background-color: beige;
         }
+
+        .text-danger{
+            color: red;
+        }
     </style>
     <title>Register</title>
 </head>
@@ -22,6 +31,7 @@
     <div class="w-full max-w-lg">
         <div class="leading-loose">
             <form class="max-w-xl m-4 p-10 bg-white rounded shadow-xl" method="POST" action="auth.php">
+                
                 <p class="text-gray-800 font-medium text-center">Register</p>
                 <div class="">
                     <label class="block text-sm text-gray-00" for="cus_name"> First Name</label>
