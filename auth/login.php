@@ -38,7 +38,7 @@
           </a>
         </div>
         <a class="inline-block right-0 align-baseline font-bold text-sm text-500 hover:text-blue-800" href="signup.php">
-          Not registered ?
+          Not registered? Sign Up!
         </a>
       </form>
 

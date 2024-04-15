@@ -1,6 +1,9 @@
 <?php
 
 
+
+// echo phpinfo();
+
 ini_set ('display_errors', 'on');
 ini_set ('log_errors', 'on');
 ini_set ('display_startup_errors', 'on');
@@ -91,13 +94,8 @@ function validate_mobile($mobile)
         //encrypt the password before saving in the database
 		$hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // // create slug
-        // $slug_id = uniqid();
-        // $full_name = $first_name." ".$last_name;
-        // $slug = slugify($full_name)."-{$slug_id}";
 
-        // // create activation code
-        // $activation_code = uniqid();
+
 
         $stmt = mysqli_prepare($conn, "INSERT INTO user (firstName, lastName, userEmail, telephone, userPassword, created_at) VALUES(?, ?, ?, ?, ?, CURRENT_TIMESTAMP)");
         mysqli_stmt_bind_param($stmt, "sssss", $first_name, $last_name, $user_email, $mobile_number, $hashPassword);
@@ -163,15 +161,24 @@ if(isset($_POST["login_btn"])){
             // Check if passwords match
         if (password_verify($loginPassword, $password_db)) {
             // Verification success! User has logged-in!
-            // session_regenerate_id(); //create session to remember user
-            header('Location: home.php');
+                // 
+            //create session to remember user
+
+            session_start();
+            session_regenerate_id();
+                $_SESSION['logged_in'] = TRUE;
+                $_SESSION['id'] = $userid;
+                $_SESSION['firstname'] = $first_name;
+                $_SESSION['full_name'] = $first_name . " " . $last_name;
+                header('Location: home.php');
+            
         }else{
                 // Incorrect password
             $errors['namepassErr'] = 'Wrong credentials!';
 }
 if ($errors){
     foreach ($errors as $error){
-        echo "<p class='text-danger text-center'><strong>$error</strong></p>";
+        echo "<h2 class='text-danger text-center'><strong>$error</strong></h2>";
     }
 }
 

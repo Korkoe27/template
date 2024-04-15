@@ -63,11 +63,14 @@ include("auth.php");
                 </div> -->
 
                 <div class="mt-4 flex justify-center">
-                    <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" name="submitUser" type="submit">Register</button>
+                    <button class="px-4 py-1  text-white font-light tracking-wider bg-gray-900 rounded" name="submitUser" type="submit">Register</button>
+                    
                 </div>
-                <a class="inline-block right-0 align-baseline font-bold text-sm text-center text-500 hover:text-blue-800" href="login.php">
-                    Already have an account ?
+                <div class="mt-4 flex justify-center">
+                <a class="inline-block align-baseline font-bold text-sm text-center text-500 hover:text-blue-800" href="login.php">
+                    Already have an account? Log In.
                 </a>
+                </div>
             </form>
         </div>
     </div>
