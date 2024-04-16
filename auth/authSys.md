@@ -14,9 +14,18 @@ After user has signed up or logged in, they'll be redirected to a homepage.
 
 
 ToDO
+
+
+
+
     1. Forgot Password.
+
     2. Email verification.
+
     3. Log out✅
+
     4. Give alerts instead of error pages
-    5. Prevent user from going back to login page after successful  login --- COMPLETED ✅
+
+    5. Prevent user from going back to login page after successful  login✅
+    
     6. Restrict user from adding spaces to password
