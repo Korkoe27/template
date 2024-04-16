@@ -1,10 +1,10 @@
-This is a full authentication system written PHP, MySQL, HTML, TailwindCSS and Javascript.
+This is a full authentication system written with PHP, MySQL, HTML, TailwindCSS and Javascript.
 No Account management functionalities will be added.
 Users can ONLY sign up, log in, log out.
 After user has signed up or logged in, they'll be redirected to a homepage.
     
 
-    1. Ensure all pages are accessible if and only if user has been signed in.
+    1. Ensure all pages are accessible if and only if user has been signed in. Completed✅
     2. 
 
 
@@ -16,3 +16,7 @@ After user has signed up or logged in, they'll be redirected to a homepage.
 ToDO
     1. Forgot Password.
     2. Email verification.
+    3. Log out✅
+    4. Give alerts instead of error pages
+    5. Prevent user from going back to login page after successful  login --- COMPLETED ✅
+    6. Restrict user from adding spaces to password

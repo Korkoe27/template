@@ -30,17 +30,13 @@ function sanitize(String $value)
 }
 
 
-function validate_mobile($mobile)
-{
-    return preg_match('/^[0-9]{10}+$/', $mobile);
-}
 
 
     if(isset($_POST['submitUser'])){
         $first_name = sanitize($_POST['firstName']);
         $last_name = sanitize($_POST['lastName']);
         $user_email = sanitize($_POST['userEmail']);
-        $mobile_number = validate_mobile($_POST['telephone']);
+        $mobile_number = sanitize($_POST['telephone']);
         $password = sanitize($_POST['userPassword']);
         $confirm_pwd = sanitize($_POST['confirmPwd']);
 
@@ -174,7 +170,7 @@ if(isset($_POST["login_btn"])){
             
         }else{
                 // Incorrect password
-            $errors['namepassErr'] = 'Wrong credentials!';
+            $errors['namepassErr'] = 'Incorrect Password! Try Again.';
 }
 if ($errors){
     foreach ($errors as $error){

@@ -1,5 +1,12 @@
+
+
 <?php
-include("auth.php");
+session_start();
+if (isset($_SESSION['logged_in'])) {
+  // User is already logged in, redirect to homepage
+  header("Location: home.php");
+  exit();
+}
 
 ?>
 
