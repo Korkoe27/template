@@ -39,3 +39,9 @@
 //         window.location.href = "logout.php";
 //     }
 // }
+
+
+
+function displayErrors(){
+    
+}

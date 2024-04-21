@@ -30,6 +30,18 @@ function sanitize(String $value)
 }
 
 
+//validating phone number
+function validatePhone($phone, $errors){
+    if(!preg_match('/^[0-9]{10}+$/', $phone)) {
+        $errors['invalidPhone'] = "Enter a valid telephone number";
+
+        } else {
+            $valid_number = filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
+            return $valid_number;
+        }
+}
+
+
 
 
     if(isset($_POST['submitUser'])){
@@ -39,6 +51,25 @@ function sanitize(String $value)
         $mobile_number = sanitize($_POST['telephone']);
         $password = sanitize($_POST['userPassword']);
         $confirm_pwd = sanitize($_POST['confirmPwd']);
+
+
+        if (preg_match('/\s/', $password)) {
+
+            $errors['passwordErr'] = "Password should NOT contain spaces.";
+        
+        }         
+            if (strlen($password) < '8') {
+                $errors['passwordLimit'] = "Your Password Must Contain At Least 8 Characters!";
+            } 
+            if(!preg_match("#[0-9]+#", $password)) {
+                $errors['noNumberPasswordErr'] = "Your Password Must Contain At Least  Numbers!";
+            } 
+            if(!preg_match("#[A-Z]+#", $password)) {
+                $errors['noCapsPwdErr'] = "Your Password Must Contain At Least  Capital Letters!";
+            } 
+            if(!preg_match("#[a-z]+#", $password)) {
+                $errors['smallCapErr'] = "Your Password Must Contain At Least Lowercase Letters!";
+            }
 
 
         if(empty($first_name)){
@@ -140,6 +171,7 @@ if(isset($_POST["login_btn"])){
     }
 
     $stmt = mysqli_prepare($conn, "SELECT id , firstName, lastName, userPassword FROM user WHERE userEmail = ? LIMIT 1");
+    
     mysqli_stmt_bind_param($stmt, "s", $loginEmail);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_bind_result($stmt, $userid, $first_name, $last_name, $password_db);
@@ -149,7 +181,9 @@ if(isset($_POST["login_btn"])){
         // Check if email is exist 
         if (empty($userid)){
             $errors['emailNotExistsErr'] ='We cannot find an account with that email address';
-        }
+        }else{
+
+        
 
         // if(empty($errors)){
         //     $stmt = mysqli_prepare($conn, "SELECT userPassword FROM user WHERE ");
@@ -172,6 +206,8 @@ if(isset($_POST["login_btn"])){
                 // Incorrect password
             $errors['namepassErr'] = 'Incorrect Password! Try Again.';
 }
+
+        }
 if ($errors){
     foreach ($errors as $error){
         echo "<h2 class='text-danger text-center'><strong>$error</strong></h2>";

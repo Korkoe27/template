@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (isset($_SESSION['logged_in'])) {
+  // User is already logged in, redirect to homepage
+  header("Location: home.php");
+  exit();
+}
+
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -18,15 +30,6 @@
 </head>
 
 
-<?php
-session_start();
-if (isset($_SESSION['logged_in'])) {
-  // User is already logged in, redirect to homepage
-  header("Location: home.php");
-  exit();
-}
-
-?>
 
 <body class="h-screen font-sans login bg-cover">
 <div class="container mx-auto h-full flex flex-1 justify-center items-center">
