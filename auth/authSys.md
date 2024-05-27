@@ -5,7 +5,7 @@ After user has signed up or logged in, they'll be redirected to a homepage.
     
 
     1. Ensure all pages are accessible if and only if user has been signed in. Completed✅
-    2. 
+    2. Display content using API.
 
 
 
@@ -24,7 +24,7 @@ ToDO
 
     3. Log out✅
 
-    4. Give alerts instead of error pages
+    4. Display Errors✅
 
     5. Prevent user from going back to login page after successful  login✅
 

@@ -1,47 +1,37 @@
-// function showMenu(){
-//  debugger;
-// document.getElementById("menu").classList.toggle("show");
-// }
+// $(document).ready(function() {
 
-
-// window.onclick = function(event) {
-//     if(!event.target.matches('menu-button')) {
-//         var dropdowns = document.getElementsByClassName('dropdown');
-//         var i;
-//         for(i = 0;i < dropdowns.length; i++){
-//             var openDropdown = dropdowns[i];
-//             if(openDropdown.classList.contains('show')){
-//                 openDropdown.classList.remove('show');
-//             }
-//         }
-//     }
-// }
-
-
-
-// function showMenu(){
-//     var dropdown = document.getElementById("dropdown");
-
-//     if (dropdown.style.display = "none") {
-//         dropdown.style.display = "block";
-//       } 
-//     //   else {
-//     //     dropdown.style.display = "block";
-//     //   }
-//     //   debugger;
-// }
-
-
-// function logout() {
-//     // Display confirmation alert
-//     if (confirm("Are you sure you want to logout?")) {
-//         // Redirect to logout.php
-//         window.location.href = "logout.php";
-//     }
-// }
-
-
-
-function displayErrors(){
+//     $('#auth').submit(function(e) {
+//         e.preventDefault(); // Prevent the default form submission
     
-}
+//         var formData = $(this).serialize(); // Serialize form data
+//         formData += '&submit=submit'; // Append submit button value
+    
+//         $.ajax({
+//             url: 'auth.php',
+//             type: 'POST',
+//             data: formData,
+//             dataType: 'json',
+//             success: function(response) {
+//                 console.log("AJAX request successful. Response:", response);
+//                 if (response.status === 'error') {
+//                     $('#errors').html(''); // Clear previous errors
+//                     var errorList = '<ul>';
+//                     $.each(response.errors, function(index, error) {
+//                         errorList += '<li>' + error + '</li>'; // List each error
+//                     });
+//                     errorList += '</ul>';
+//                     $('#errors').html(errorList);
+//                 } else {
+//                     // Redirect to index.php on success
+//                     window.location.href = 'home.php';
+//                 }
+//             },
+//             error: function(xhr, status, error) {
+//                 console.log("AJAX request failed. Status:", status, "Error:", error, "XHR:", xhr);
+//                 $('#errors').html('<p>An error occurred: ' + error + '</p>');
+//             }
+//         });
+//     });
+//     });
+    
+    
