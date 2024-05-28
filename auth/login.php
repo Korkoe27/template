@@ -10,60 +10,6 @@ include("auth.php");
 
 
 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' &&(isset($_POST["login_btn"]))){
-
-    
-  $loginEmail =sanitize($_POST["login_email"]);
-  $loginPassword = sanitize($_POST["login_password"]);
-
-
-  if(empty($loginEmail)){
-     echo $errors['You must provide your email.'];
-  }
-
-  if(empty($loginPassword)){
-      echo $errors['Please provide a password'];
-  }
-
-  $stmt = mysqli_prepare($conn, "SELECT id , firstName, lastName, userPassword FROM user WHERE userEmail = ? LIMIT 1");
-  
-  mysqli_stmt_bind_param($stmt, "s", $loginEmail);
-  mysqli_stmt_execute($stmt);
-  mysqli_stmt_bind_result($stmt, $userid, $first_name, $last_name, $password_db);
-  mysqli_stmt_fetch($stmt);
-  mysqli_stmt_close($stmt);
-
-      // Check if email is exist 
-      if (empty($userid)){
-          $errors[] ='No such account exists. Sign Up!';
-      }else{
-
-      
-
-          // Check if passwords match
-      if (password_verify($loginPassword, $password_db)) {
-          // Verification success! User has logged-in!
-              // 
-          //create session to remember user
-
-          session_start();
-          session_regenerate_id();
-              $_SESSION['logged_in'] = TRUE;
-              $_SESSION['id'] = $userid;
-              $_SESSION['firstname'] = $first_name;
-              $_SESSION['full_name'] = $first_name . " " . $last_name;
-              header('Location: home.php');
-          
-      }else{
-              // Incorrect password
-          $errors[] = 'Incorrect Password! Try Again.';
-          
-}
-
-      }
-
-}
 ?>
 
 
