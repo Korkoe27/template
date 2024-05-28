@@ -5,7 +5,8 @@ After user has signed up or logged in, they'll be redirected to a homepage.
     
 
     1. Ensure all pages are accessible if and only if user has been signed in. Completed✅
-    2. Display content using API.
+    
+    2. Display content on homepage using API.
 
 
 
@@ -30,4 +31,6 @@ ToDO
 
     6. Restrict user from adding spaces to password.✅
 
-    7. Add phone number parsing with country codes.
+    7. Add phone number parsing with country codes.(optional)
+
+    8. Reset password

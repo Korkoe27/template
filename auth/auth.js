@@ -1,37 +1,23 @@
-// $(document).ready(function() {
+const gallery = document.getElementById('gallery');
 
-//     $('#auth').submit(function(e) {
-//         e.preventDefault(); // Prevent the default form submission
-    
-//         var formData = $(this).serialize(); // Serialize form data
-//         formData += '&submit=submit'; // Append submit button value
-    
-//         $.ajax({
-//             url: 'auth.php',
-//             type: 'POST',
-//             data: formData,
-//             dataType: 'json',
-//             success: function(response) {
-//                 console.log("AJAX request successful. Response:", response);
-//                 if (response.status === 'error') {
-//                     $('#errors').html(''); // Clear previous errors
-//                     var errorList = '<ul>';
-//                     $.each(response.errors, function(index, error) {
-//                         errorList += '<li>' + error + '</li>'; // List each error
-//                     });
-//                     errorList += '</ul>';
-//                     $('#errors').html(errorList);
-//                 } else {
-//                     // Redirect to index.php on success
-//                     window.location.href = 'home.php';
-//                 }
-//             },
-//             error: function(xhr, status, error) {
-//                 console.log("AJAX request failed. Status:", status, "Error:", error, "XHR:", xhr);
-//                 $('#errors').html('<p>An error occurred: ' + error + '</p>');
-//             }
-//         });
-//     });
-//     });
-    
-    
+// Function to fetch photos from JSONPlaceholder API
+async function fetchPhotos() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/photos');
+        const photos = await response.json();
+        
+        // Display only the first 10 photos
+        const firstTenPhotos = photos.slice(0, 10);
+        firstTenPhotos.forEach(photo => {
+            const img = document.createElement('img');
+            img.src = photo.thumbnailUrl;
+            img.alt = photo.title;
+            gallery.appendChild(img);
+        });
+    } catch (error) {
+        console.error('Error fetching photos:', error);
+    }
+}
+
+// Fetch and display photos when the page loads
+fetchPhotos();

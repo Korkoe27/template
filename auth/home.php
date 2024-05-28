@@ -45,14 +45,31 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== TRUE) {
 <body id="home">
     
 
-<!-- <script>
-  function preventBack(){
-    window.history.forward();
-  }
-  setTimeout("preventBack()",0);
-  window.unload=function(){null;}
-</script> -->
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
 
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 90%;
+}
+
+.gallery img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+</style>
 <div class="min-h-full">
   <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -171,21 +188,23 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== TRUE) {
     </div>
   </header>
   <main>
-    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 gallery" id="gallery">
       <!-- Your content -->
     </div>
   </main>
 </div>
 
-<div>
-  jkwrfhjs;idjfoij
-</div>
 
 
 
 
 
-<script src="auth.js"></script>
+<script src="auth.js">
+
+// const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+
+
+</script>
 
 </body>
 </html>
