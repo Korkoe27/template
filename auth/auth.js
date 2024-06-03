@@ -21,3 +21,26 @@ async function fetchPhotos() {
 
 // Fetch and display photos when the page loads
 fetchPhotos();
+
+
+
+function pwdCheck() {
+    const createPassword = document.getElementById('userPassword').value;
+    const confirmPassword = document.getElementById('confirmPwd').value;
+    const messageDiv = document.getElementById('message');
+
+    if (confirmPassword === "") {
+        messageDiv.style.display = 'none';
+        return;
+    }
+
+    if (createPassword === confirmPassword) {
+        messageDiv.textContent = 'Passwords match';
+        messageDiv.className = 'success';
+    } else {
+        messageDiv.textContent = 'Both passwords do not match';
+        messageDiv.className = 'error';
+    }
+
+    messageDiv.style.display = 'block';
+}
