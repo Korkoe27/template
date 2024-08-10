@@ -12,7 +12,7 @@ $errors = array();
 
 require_once "config.php";
 
-
+// global $conn;
 
 
 // sanitize value from form

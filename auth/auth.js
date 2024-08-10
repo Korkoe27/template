@@ -1,3 +1,37 @@
+
+$(function(){
+
+
+    //show/hide password function
+    var showPassword = $(".showPwd");
+var hidePassword = $(".hidePwd");
+var password = $(".pwd");
+
+showPassword.click(function(){
+    $(this).hide();
+    $(".hidePwd").show();
+
+
+    password.prop("type","text");
+
+});
+
+hidePassword.click(function(){
+    $(this).hide();
+    $(".showPwd").show();
+
+
+    password.prop("type","password");
+});
+
+
+});
+
+
+
+
+
+
 const gallery = document.getElementById('gallery');
 
 // Function to fetch photos from JSONPlaceholder API
@@ -44,3 +78,5 @@ function pwdCheck() {
 
     messageDiv.style.display = 'block';
 }
+
+
