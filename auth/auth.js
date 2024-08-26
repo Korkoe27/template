@@ -29,6 +29,36 @@ hidePassword.click(function(){
 
 
 
+$(function(){
+
+
+    //show/hide confirm password function
+    var showCheckPassword = $(".showCheckPwd");
+var hideConfirmPassword = $(".hideCkeckPwd");
+var checkPassword = $(".checkPwd");
+
+showCheckPassword.click(function(){
+    $(this).hide();
+    $(".hideCkeckPwd").show();
+
+
+    checkPassword.prop("type","text");
+
+});
+
+hideConfirmPassword.click(function(){
+    $(this).hide();
+    $(".showCheckPwd").show();
+
+
+    checkPassword.prop("type","password");
+});
+
+
+});
+
+
+
 
 
 
